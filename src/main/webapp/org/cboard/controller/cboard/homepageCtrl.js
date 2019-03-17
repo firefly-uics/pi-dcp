@@ -7,6 +7,8 @@ cBoard.controller('homepageCtrl', function ($rootScope, $scope, $state, $http, $
     var treeID = 'dataSetTreeID';
     var originalData = [];
 
+    $rootScope.pageTitle = translate('HOMEPAGE.TITLE');
+
     var getDatasetList = function () {
         $http.get("dashboard/getDatasetList.do").success(function (response) {
             $scope.datasetList = response;

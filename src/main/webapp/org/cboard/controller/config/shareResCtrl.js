@@ -1,9 +1,10 @@
 /**
  * Created by dw on 2017/04/10.
  */
-cBoard.controller('shareResCtrl', function ($scope, $http, ModalUtils, $filter) {
+cBoard.controller('shareResCtrl', function ($rootScope, $scope, $http, ModalUtils, $filter) {
 
     var translate = $filter('translate');
+    $rootScope.pageTitle = translate('SIDEBAR.SHARE_RESOURCE');
     $scope.curUser;
     $scope.userKeyword = '';
 

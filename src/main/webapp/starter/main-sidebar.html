@@ -1,103 +1,117 @@
+<!--<div class="logo">-->
+<!--<a href="starter.html">-->
+<!--<img class="logo-lg" src="../imgs/logo.png">-->
+<!--</a>-->
+<!--</div>-->
+
+
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
+    <div class="sidebar-wrapper">
+        <!-- Sidebar user panel (optional) -->
+        <!--<div class="user-panel">-->
+        <!--<div class="pull-left image">-->
+        <!--<img src="{{user.avatar}}" class="img-circle" alt="User Image">-->
+        <!--</div>-->
+        <!--<div class="pull-left info">-->
+        <!--<p>{{user.username}}</p>-->
+        <!--</div>-->
+        <!--</div>-->
 
-    <!-- Sidebar user panel (optional) -->
-    <div class="user-panel">
-        <div class="pull-left image">
-            <img src="{{user.avatar}}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-            <p>{{user.username}}</p>
-        </div>
-    </div>
-    <!-- Sidebar Menu -->
-    <ul class="sidebar-menu">
-        <li class="header">{{'SIDEBAR.MENU'|translate}}</li>
-        <!-- DashBoard -->
-        <li class="treeview" ui-sref-active="active">
-            <a>
-                <i class="fa fa-th"></i>
-                <span>{{'SIDEBAR.C_DASHBOARD'|translate}}</span>
-                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-            </a>
-            <ul class="treeview-menu">
-                <li ui-sref-active="active" ng-repeat="c in categoryList | hasBoards : boardList">
-                    <a>
-                        <i class="fa fa-folder"></i>
+        <!-- Sidebar Menu -->
+        <ul class="nav sidebar-menu">
+            <!-- DashBoard -->
+            <li class="treeview" ui-sref-active="active">
+                <a>
+                    <i class="material-icons">dashboard</i>
+                    <span>{{'SIDEBAR.C_DASHBOARD'|translate}}</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="nav treeview-menu">
+                    <li ui-sref-active="active" ng-repeat="c in categoryList | hasBoards : boardList">
+                        <a>
+                            <i class="fa fa-folder"></i>
                             {{c.name}}
-                        <span class="pull-right-container">
+                            <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li ui-sref-active="active" ng-repeat="b in boardList | filter:{categoryId:c.id}:true">
-                            <a ui-sref="dashboard.category.view({id:b.id,category:c.name})"><i class="fa fa-dashboard"></i>{{b.name}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="treeview" ui-sref-active="active">
-            <a>
-                <i class="fa fa-th"></i>
-                <span>{{'SIDEBAR.MY_DASHBOARD'|translate}}</span>
-                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-            </a>
-            <ul class="treeview-menu">
-                <li ui-sref-active="active" ng-repeat="b in boardList | filter:{userId:user.userId}:true">
-                    <a ui-sref="mine.view({id:b.id})"><i class="fa fa-dashboard"></i>{{b.name}}</a>
-                </li>
-            </ul>
-        </li>
-        <!-- Config -->
-        <li class="treeview" ui-sref-active="active" ng-if="isShowMenu('config')">
-            <a>
-                <i class="fa fa-cog"></i>
-                <span>{{'SIDEBAR.CONFIG'|translate}}</span>
-                <span class="pull-right-container">
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active" ng-repeat="b in boardList | filter:{categoryId:c.id}:true">
+                                <a ui-sref="dashboard.category.view({id:b.id,category:c.name})"><i
+                                        class="fa fa-dashboard"></i>{{b.name}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview" ui-sref-active="active">
+                <a>
+                    <i class="material-icons">dashboard</i>
+                    <span>{{'SIDEBAR.MY_DASHBOARD'|translate}}</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li ui-sref-active="active" ng-repeat="b in boardList | filter:{userId:user.userId}:true">
+                        <a ui-sref="mine.view({id:b.id})"><i class="fa fa-dashboard"></i>{{b.name}}</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Config -->
+            <li class="treeview" ui-sref-active="active" ng-if="isShowMenu('config')">
+                <a>
+                    <i class="material-icons">settings</i>
+                    <span>{{'SIDEBAR.CONFIG'|translate}}</span>
+                    <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
-            </a>
-            <ul class="treeview-menu">
-                <li ui-sref-active="active" ng-if="isShowMenu('config.datasource')">
-                    <a ui-sref="config.datasource"><i class="fa fa-database"></i>{{'SIDEBAR.DATA_SOURCE'|translate}}</a>
-                </li>
-                <li ui-sref-active="active" ng-if="isShowMenu('config.dataset')">
-                    <a ui-sref="config.dataset"><i class="fa fa-table"></i>{{'SIDEBAR.DATASET'|translate}}</a>
-                </li>
-                <li ui-sref-active="active" ng-if="isShowMenu('config.widget')">
-                    <a ui-sref="config.widget"><i class="fa fa-line-chart"></i>{{'SIDEBAR.WIDGET'|translate}}</a>
-                </li>
-                <li ui-sref-active="active" ng-if="isShowMenu('config.board')">
-                    <a ui-sref="config.board"><i class="fa fa-puzzle-piece"></i>{{'SIDEBAR.DASHBOARD'|translate}}</a>
-                </li>
-                <li ui-sref-active="active" ng-if="isShowMenu('config.category')">
-                    <a ui-sref="config.category"><i class="fa fa-folder"></i>{{'SIDEBAR.DASHBOARD_CATEGORY'|translate}}</a>
-                </li>
-                <li ui-sref-active="active" ng-if="isShowMenu('config.job')">
-                    <a ui-sref="config.job"><i class="fa fa-clock-o"></i>{{'SIDEBAR.JOB'|translate}}</a>
-                </li>
-                <li ui-sref-active="active" ng-if="isShowMenu('config.role')">
-                    <a ui-sref="config.role"><i class="fa fa-share-alt"></i>{{'SIDEBAR.SHARE_RESOURCE'|translate}}</a>
-                </li>
-            </ul>
-        </li>
-        <!-- Admin -->
-        <li class="treeview" ui-sref-active="active" ng-if="isShowMenu('admin')">
-            <a>
-                <i class="fa fa-cog"></i>
-                <span>{{'SIDEBAR.ADMIN'|translate}}</span>
-                <span class="pull-right-container">
+                </a>
+                <ul class="treeview-menu">
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.datasource')">
+                        <a ui-sref="config.datasource"><i class="fa fa-database"></i>{{'SIDEBAR.DATA_SOURCE'|translate}}</a>
+                    </li>
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.dataset')">
+                        <a ui-sref="config.dataset"><i class="fa fa-table"></i>{{'SIDEBAR.DATASET'|translate}}</a>
+                    </li>
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.widget')">
+                        <a ui-sref="config.widget"><i class="fa fa-line-chart"></i>{{'SIDEBAR.WIDGET'|translate}}</a>
+                    </li>
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.board')">
+                        <a ui-sref="config.board"><i
+                                class="fa fa-puzzle-piece"></i>{{'SIDEBAR.DASHBOARD'|translate}}</a>
+                    </li>
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.category')">
+                        <a ui-sref="config.category"><i class="fa fa-folder"></i>{{'SIDEBAR.DASHBOARD_CATEGORY'|translate}}</a>
+                    </li>
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.job')">
+                        <a ui-sref="config.job"><i class="fa fa-clock-o"></i>{{'SIDEBAR.JOB'|translate}}</a>
+                    </li>
+                    <li ui-sref-active="active" ng-if="isShowMenu('config.role')">
+                        <a ui-sref="config.role"><i
+                                class="fa fa-share-alt"></i>{{'SIDEBAR.SHARE_RESOURCE'|translate}}</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Admin -->
+            <li class="treeview" ui-sref-active="active" ng-if="isShowMenu('admin')">
+                <a>
+                    <i class="material-icons">settings</i>
+                    <span>{{'SIDEBAR.ADMIN'|translate}}</span>
+                    <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
-            </a>
-            <ul class="treeview-menu">
-                <li ui-sref-active="active" ng-if="isShowMenu('admin.user')">
-                    <a ui-sref="admin.user"><i class="fa fa-fw fa-user"></i>{{'SIDEBAR.USER_ADMIN'|translate}}</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <!-- /.sidebar-menu -->
+                </a>
+                <ul class="treeview-menu">
+                    <li ui-sref-active="active" ng-if="isShowMenu('admin.user')">
+                        <a ui-sref="admin.user"><i class="fa fa-fw fa-user"></i>{{'SIDEBAR.USER_ADMIN'|translate}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- /.sidebar-menu -->
+    </div>
 </section>
+
+<!--<div class="sidebar-background" style="background-image: url(lib/material-dashboard/assets/img/sidebar-1.jpg) "></div>-->
+
 <!-- /.sidebar -->

@@ -1,9 +1,10 @@
 /**
  * Created by dw on 2016/10/11.
  */
-cBoard.controller('datasetCtrl', function ($scope, $http, $state, $stateParams, dataService, $uibModal, ModalUtils, $filter, chartService, $timeout, uuid4) {
+cBoard.controller('datasetCtrl', function ($rootScope, $scope, $http, $state, $stateParams, dataService, $uibModal, ModalUtils, $filter, chartService, $timeout, uuid4) {
 
     var translate = $filter('translate');
+    $rootScope.pageTitle = translate('SIDEBAR.DATASET');
     $scope.optFlag = 'none';
     $scope.curDataset = {data: {expressions: [], filters: [], schema: {dimension: [], measure: []}}};
     $scope.curWidget = {};

@@ -1,9 +1,10 @@
 /**
  * Created by dw on 2016/8/19.
  */
-cBoard.controller('datasourceCtrl', function ($scope, $state, $stateParams, $http, ModalUtils, $uibModal, $filter, $q) {
+cBoard.controller('datasourceCtrl', function ($rootScope, $scope, $state, $stateParams, $http, ModalUtils, $uibModal, $filter, $q) {
 
     var translate = $filter('translate');
+    $rootScope.pageTitle = translate('SIDEBAR.DATA_SOURCE');
     $scope.optFlag = 'none';
     $scope.dsView = '';
     $scope.curDatasource = {};

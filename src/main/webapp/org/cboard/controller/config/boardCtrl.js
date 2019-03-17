@@ -7,6 +7,7 @@ cBoard.controller('boardCtrl',
               $timeout, dataService, $state, $window, $stateParams) {
     var translate = $filter('translate');
 
+    $rootScope.pageTitle = translate('SIDEBAR.DASHBOARD');
     $scope.optFlag = 'none';
     $scope.curBoard = {layout: {rows: []}};
     $scope.alerts = [];

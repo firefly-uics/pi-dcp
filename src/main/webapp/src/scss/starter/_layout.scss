@@ -1,0 +1,18 @@
+.wrapper {
+  height: initial;
+  background-color: #EEEEEE !important;
+
+  .content-wrapper {
+    background-color: #EEEEEE;
+    padding-top: 0;
+  }
+
+  .content-navbar-wapper {
+    .navbar {
+      margin-bottom: 0;
+    }
+    .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p {
+      color: inherit;
+    }
+  }
+}

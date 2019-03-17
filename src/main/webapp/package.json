@@ -1,0 +1,16 @@
+{
+"name": "gulp-sass",
+  "version": "4.0.2",
+  "description": "Gulp plugin for sass",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "start": "gulp sass:watch"
+  },
+  "devDependencies": {
+    "gulp": "^3.0.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.11.0"
+  }
+}

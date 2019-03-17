@@ -3,6 +3,7 @@
  */
 
 cBoard.controller('dashboardViewCtrl', function ($timeout, $rootScope, $scope, $state, $stateParams, $http, ModalUtils, chartService, $interval, $uibModal, dataService) {
+    $rootScope.pageTitle = "看板";
 
     $scope.loading = true;
     $scope.paramInit = 0;

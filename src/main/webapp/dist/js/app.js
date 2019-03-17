@@ -157,7 +157,8 @@ $(function () {
   _init();
 
   //Activate the layout maker
-  $.AdminLTE.layout.activate();
+    $.AdminLTE.layout.activate();
+    $.AdminLTE.layout.initSidebarScrollbar();
 
   //Enable sidebar tree view controls
   $.AdminLTE.tree('.sidebar');
@@ -219,6 +220,12 @@ $(function () {
     });
 
   });
+
+    // $(document.body).slimscroll({
+    //     height: $(window).height() + "px",
+    //     color: "#aaa",
+    //     size: "6px"
+    // });
 });
 
 /* ----------------------------------
@@ -288,16 +295,19 @@ function _init() {
       //Enable slimscroll for fixed layout
       if ($.AdminLTE.options.sidebarSlimScroll) {
         if (typeof $.fn.slimScroll != 'undefined') {
-          //Destroy if it exists
-          $(".sidebar").slimScroll({destroy: true}).height("auto");
-          //Add slimscroll
-          $(".sidebar").slimscroll({
-            height: ($(window).height() - $(".main-header").height()) + "px",
-            color: "rgba(0,0,0,0.2)",
-            size: "3px"
-          });
+          this.initSidebarScrollbar();
         }
       }
+    },
+    initSidebarScrollbar: function () {
+        //Destroy if it exists
+        $(".sidebar").slimScroll({destroy: true}).height("auto");
+        //Add slimscroll
+        $(".sidebar").slimscroll({
+            height: ($(window).height() - $(".main-header").height()) + "px",
+            color: "#aaa",
+            size: "6px"
+        });
     }
   };
 
@@ -400,6 +410,7 @@ function _init() {
             checkElement.removeClass('menu-open');
             //Fix the layout in case the sidebar stretches over the height of the window
             //_this.layout.fix();
+            _this.layout.fixSidebar();
           });
           checkElement.parent("li").removeClass("active");
         }
@@ -422,6 +433,7 @@ function _init() {
             parent_li.addClass('active');
             //Fix the layout in case the sidebar stretches over the height of the window
             _this.layout.fix();
+              _this.layout.fixSidebar();
           });
         }
         else if(checkElement.length == 0){

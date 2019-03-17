@@ -12,6 +12,13 @@
         </param-value>
     </context-param>
 
+    <locale-encoding-mapping-list>
+        <locale-encoding-mapping>
+            <locale>zh</locale>
+            <encoding>UTF-8</encoding>
+        </locale-encoding-mapping>
+    </locale-encoding-mapping-list>
+
     <!--
     <filter>
         <filter-name>LogFilter</filter-name>

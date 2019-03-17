@@ -1,9 +1,10 @@
 /**
  * Created by dw on 2016/8/29.
  */
-cBoard.controller('categoryCtrl', function ($scope, $http, ModalUtils, $filter) {
+cBoard.controller('categoryCtrl', function ($rootScope, $scope, $http, ModalUtils, $filter) {
 
     var translate = $filter('translate');
+    $rootScope.pageTitle = translate('SIDEBAR.DASHBOARD_CATEGORY');
     $scope.optFlag = 'none';
     $scope.categoryList = {};
     $scope.alerts = [];

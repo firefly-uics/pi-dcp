@@ -2,10 +2,11 @@
  * Created by dw on 2016/8/12.
  */
 'use strict';
-cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $uibModal, dataService, ModalUtils, updateService, $filter, chartService, $timeout) {
+cBoard.controller('widgetCtrl', function ($rootScope, $scope, $state, $stateParams, $http, $uibModal, dataService, ModalUtils, updateService, $filter, chartService, $timeout) {
 
         var translate = $filter('translate');
         var updateUrl = "dashboard/updateWidget.do";
+        $rootScope.pageTitle = translate('SIDEBAR.WIDGET');
         $scope.liteMode = false;
         $scope.tab = 'preview_widget2';
         //图表类型初始化
@@ -250,13 +251,13 @@ cBoard.controller('widgetCtrl', function ($scope, $state, $stateParams, $http, $
         };
 
         $scope.switchLiteMode = function (mode) {
-            if (mode) {
-                $scope.liteMode = mode;
-                $scope.$parent.$parent.liteMode = mode;
-            } else {
-                $scope.liteMode = !$scope.liteMode;
-                $scope.$parent.$parent.liteMode = $scope.liteMode;
-            }
+            // if (mode) {
+            //     $scope.liteMode = mode;
+            //     $scope.$parent.$parent.liteMode = mode;
+            // } else {
+            //     $scope.liteMode = !$scope.liteMode;
+            //     $scope.$parent.$parent.liteMode = $scope.liteMode;
+            // }
         }
 
         //界面控制

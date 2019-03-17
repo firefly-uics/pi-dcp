@@ -4,6 +4,8 @@
 cBoard.controller('jobCtrl', function ($scope, $rootScope, $http, dataService, $uibModal, ModalUtils, $filter, $interval) {
     var translate = $filter('translate');
 
+    $rootScope.pageTitle = translate('SIDEBAR.JOB');
+
     $scope.jobTypes = [{name: 'Send Mail', type: 'mail'}];
 
     $scope.interval = $interval(function () {
