@@ -1,0 +1,10 @@
+{
+    "name": "sass",
+    "version": "1.0.0",
+    "scripts": {
+        "sass": "node-sass"
+    },
+    "devDependencies": {
+        "node-sass": "^4.11.0"
+    }
+}
