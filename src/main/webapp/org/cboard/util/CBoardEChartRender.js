@@ -30,7 +30,7 @@ var CBoardEChartRender = function (jqContainer, options, isDeepSpec) {
     this.options = options;
 };
 
-CBoardEChartRender.prototype.theme = "theme-fin1"; // 主题
+CBoardEChartRender.prototype.theme = "theme-fin2"; // 主题
 
 CBoardEChartRender.prototype.chart = function (group, persist) {
     var self = this;
