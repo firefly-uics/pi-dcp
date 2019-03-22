@@ -129,3 +129,15 @@
 
 .content-wrapper, .right-side, .main-footer {
   margin-left: 260px; }
+
+.nav-tabs{
+  background: #212c32;
+
+}
+
+.nav-tabs > li > a, .nav-tabs > li > a:hover, .nav-tabs > li > a:focus{
+  background: #212c32;
+}
+.nav-tabs-custom > .nav-tabs > li.active > a, .nav-tabs-custom > .nav-tabs > li.active:hover > a{
+  background: #00a5bb;
+}
