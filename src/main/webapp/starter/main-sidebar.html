@@ -4,7 +4,11 @@
 <!--</a>-->
 <!--</div>-->
 
-
+<style>
+    .sidebar .nav i, .off-canvas-sidebar .nav i{
+        font-size: 18px;
+    }
+</style>
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
     <div class="sidebar-wrapper">
@@ -23,7 +27,7 @@
             <!-- DashBoard -->
             <li class="treeview" ui-sref-active="active">
                 <a>
-                    <i class="material-icons">dashboard</i>
+                    <i class="fa fa-pie-chart"></i>
                     <span>{{'SIDEBAR.C_DASHBOARD'|translate}}</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
@@ -47,7 +51,7 @@
             </li>
             <li class="treeview" ui-sref-active="active">
                 <a>
-                    <i class="material-icons">dashboard</i>
+                    <i class="fa fa-th"></i>
                     <span>{{'SIDEBAR.MY_DASHBOARD'|translate}}</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
@@ -60,7 +64,7 @@
             <!-- Config -->
             <li class="treeview" ui-sref-active="active" ng-if="isShowMenu('config')">
                 <a>
-                    <i class="material-icons">settings</i>
+                    <i class="fa fa-gears"></i>
                     <span>{{'SIDEBAR.CONFIG'|translate}}</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
@@ -95,7 +99,7 @@
             <!-- Admin -->
             <li class="treeview" ui-sref-active="active" ng-if="isShowMenu('admin')">
                 <a>
-                    <i class="material-icons">settings</i>
+                    <i class="fa fa-wrench"></i>
                     <span>{{'SIDEBAR.ADMIN'|translate}}</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
