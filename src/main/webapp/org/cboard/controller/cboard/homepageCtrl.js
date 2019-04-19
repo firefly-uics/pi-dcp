@@ -10,9 +10,18 @@ cBoard.controller('homepageCtrl', function ($rootScope, $scope, $state, $http, $
     $rootScope.pageTitle = translate('HOMEPAGE.TITLE');
 
     var getDatasetList = function () {
-        $http.get("dashboard/getDatasetList.do").success(function (response) {
-            $scope.datasetList = response;
-            $scope.searchNode();
+        console.debug('boardList', $scope.boardList)
+
+
+        $scope.boardList.map(function(board){
+            layout = board['layout']
+            if (undefined != layout && undefined != layout['homes']){
+                console.debug('layout', layout['homes'], $.inArray($scope.user.userId, layout['homes']));
+
+                if ($.inArray($scope.user.userId, layout['homes'])>-1){
+                    $state.go('mine.view', {id: board.id});
+                }
+            }
         });
     };
 

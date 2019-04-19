@@ -2,12 +2,14 @@
  * Created by dw on 2016/8/2.
  */
 
-cBoard.controller('dashboardViewCtrl', function ($timeout, $rootScope, $scope, $state, $stateParams, $http, ModalUtils, chartService, $interval, $uibModal, dataService) {
+cBoard.controller('dashboardViewCtrl', function ($timeout, $rootScope, $scope, $state, $stateParams, $http, ModalUtils, chartService, $interval, $uibModal, dataService, $window) {
     $rootScope.pageTitle = "看板";
 
     $scope.loading = true;
     $scope.paramInit = 0;
     $scope.relations = JSON.stringify([]);
+    var updateUrl = "dashboard/updateBoard.do";
+
     $http.get("dashboard/getDatasetList.do").success(function (response) {
         $scope.datasetList = response;
         $scope.realtimeDataset = {};
@@ -227,6 +229,38 @@ cBoard.controller('dashboardViewCtrl', function ($timeout, $rootScope, $scope, $
     };
 
     var paramInitListener;
+
+    $scope.setHome = function () {
+        $scope.boardList.map(function(board){
+            if (undefined != board.layout.homes){
+                delete board.layout.homes[$.inArray($scope.user.userId, board.layout.homes)];
+                $http.post(updateUrl, {json: angular.toJson(board)}).success(function (serviceStatus) {
+                    if (serviceStatus.status == '1') {
+                        console.debug('success')
+                    } else {
+                        console.debug('warning')
+                    }
+                });
+            }
+        });
+
+        if (undefined == $scope.board.layout.homes){
+            $scope.board.layout['homes'] = [$scope.user.userId];
+        }else{
+            $scope.board.layout['homes'].push($scope.user.userId);
+        }
+
+        console.debug('setHome.board',$scope.board, $scope.user.userId);
+
+        $http.post(updateUrl, {json: angular.toJson($scope.board)}).success(function (serviceStatus) {
+            if (serviceStatus.status == '1') {
+                ModalUtils.alert(serviceStatus.msg, "modal-success", "sm");
+            } else {
+                ModalUtils.alert(serviceStatus.msg, "modal-warning", "sm");
+            }
+        });
+    };
+
     $scope.load = function (reload) {
         $scope.paramInit = 0;
         $scope.loading = true;

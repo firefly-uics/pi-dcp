@@ -1,7 +1,7 @@
 /**
  * Created by dw on 2016/7/19.
  */
-cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, $q, $filter, $uibModal, ModalUtils) {
+cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http,$window, $q, $filter, $uibModal, ModalUtils) {
 
     var translate = $filter('translate');
 
@@ -50,6 +50,10 @@ cBoard.controller('cBoardCtrl', function ($rootScope, $scope, $location, $http, 
     getMenuList();
     getCategoryList();
     getBoardList();
+
+    $scope.reloadHome = function () {
+        $window.location.reload()
+    }
 
     $scope.changePwd = function () {
         $uibModal.open({
